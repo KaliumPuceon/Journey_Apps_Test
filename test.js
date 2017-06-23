@@ -23,24 +23,19 @@ var options = {
 var request = require('request'); //load request module
 request(options,function(error,response,body){ //make request, pass values into function
 
+    var parseable = JSON.parse(body); //Create JSON string object
 
-    //console.log(body);
-    /*
-    var out = body.split("},{");
-    console.log(out[0]);
-    */
-
-    var parseable = JSON.parse(body);
-
-    for (var i = 0; i < parseable.items.length; i++){
+    for (var i = 0; i < parseable.items.length; i++){ //iterate over JSON and extract individuals
     
         var item = parseable.items[i];
-        block[i] = parseable.items[item.followers_url] = item.login;
+        block[i] = parseable.items[item.followers_url] = item.login; //Store in block for mapping to dict
 
     }
+    //now parse each block's index into a number for the new dict with the same username
 
-    console.log(block);
+    //console.log(block);
+    
 
 });
-//it's parsing time!
+
 
