@@ -38,56 +38,41 @@ limiterScrape.request(function(){
 
         }
 
-        console.log(block);
+    console.log(block);
 
-        var output = [];
-        function pushToOut(chunk){
-            
-            output.push(chunk);
-            
-        }
-            
-        var calls = [];
-        var async = require('async');
-        
-        var counter = 0;
 
-        for (var k = 0; k < block.length;k ++){
-            
-            counter +=1;
+    function getUserCount(url,user){
+        var options = {
+        url:url,
+        headers: {'User-Agent':'request'},
+        json:true
+        };
 
-            var followUrl = (block[k])[0];
-
-            var followOptions = {
-                url: followUrl,
-                headers: {'User-Agent' : 'request'}
-            }
-
-            var limiterCount = new RateLimiter(45);
-            limiterCount.request(function(){
-                    
-                var j = k;
-                var limitBlock = block;
-                
-                request(followOptions,function(error,response,body){
-            
-                    var k = j;
-                    var block = limitBlock;
-
-                    data = JSON.parse(body);
-                    count = data.length;
-                    pushToOut([count,block[k][1]]);
-                    console.log([count,block[k][1]]);
-                    console.log("\n");
-        
-                });
+        var rp = require('request-promise');
+        return rp(options)
+            .then(function(body){
+                console.log(body.length,user);
+                return([body.length,user]);
             });
-            
-            counter-=1
+
 
         }
+
+    calls = [];
+
+    for (var k = 0; k < block.length; k++){
+
+        calls.push(getUserCount(block[k][0],block[k][1]));
         
-    console.log(output);
+
+    }
+
+    Promise.all(calls).then(data=>{
+        console.log(data);
+    });
+
+
+
     
     });
 
