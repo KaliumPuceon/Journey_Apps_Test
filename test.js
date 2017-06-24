@@ -40,31 +40,55 @@ limiterScrape.request(function(){
 
         console.log(block);
 
-        for (var k = 0; k < 10;k ++){
-    
+        var output = [];
+        function pushToOut(chunk){
+            
+            output.push(chunk);
+            
+        }
+            
+        var calls = [];
+        var async = require('async');
+        
+        var counter = 0;
+
+        for (var k = 0; k < block.length;k ++){
+            
+            counter +=1;
+
             var followUrl = (block[k])[0];
 
             var followOptions = {
                 url: followUrl,
                 headers: {'User-Agent' : 'request'}
-            };
-            
+            }
+
             var limiterCount = new RateLimiter(45);
             limiterCount.request(function(){
-            
+                    
+                var j = k;
+                var limitBlock = block;
+                
                 request(followOptions,function(error,response,body){
             
+                    var k = j;
+                    var block = limitBlock;
+
                     data = JSON.parse(body);
-                    console.log(body);
                     count = data.length;
-                    dict[k] = [count,block[k][1]];
+                    pushToOut([count,block[k][1]]);
                     console.log([count,block[k][1]]);
+                    console.log("\n");
         
                 });
             });
-    
-        }
+            
+            counter-=1
 
+        }
+        
+    console.log(output);
+    
     });
 
 });
