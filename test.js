@@ -10,31 +10,62 @@
 
 console.log("Starting test run");
 
-var dict = {};
-var block = {};
+var dict = [];
+var block = [];
 
-var options = { 
+var scrapeOptions = { 
     url: 'https://api.github.com/search/users?q=location:CapeTown&sort=followers&order=desc',
     //Calls the API, requests all users in Cape Town sorted by follower count
     headers: {'User-Agent' : 'request'} //Satisfies Github's need for a user agent
 };
 
 
-var request = require('request'); //load request module
-request(options,function(error,response,body){ //make request, pass values into function
+var RateLimiter = require('request-rate-limiter'); //Request rate limiting for counting
 
-    var parseable = JSON.parse(body); //Create JSON string object
+var limiterScrape = new RateLimiter(10);
+request = require('request'); //load request module
 
-    for (var i = 0; i < parseable.items.length; i++){ //iterate over JSON and extract individuals
+limiterScrape.request(function(){
+
+    request(scrapeOptions,function(error,response,body){ //make request, pass values into function
+
+        var parseable = JSON.parse(body); //Create JSON string object
+
+        for (var i = 0; i < parseable.items.length; i++){ //iterate over JSON and extract individuals
     
-        var item = parseable.items[i];
-        block[i] = parseable.items[item.followers_url] = item.login; //Store in block for mapping to dict
+            var item = parseable.items[i];
+            block[i] = [item.followers_url,item.login]; //Store in block for mapping to dict
 
-    }
-    //now parse each block's index into a number for the new dict with the same username
+        }
 
-    //console.log(block);
+        console.log(block);
+
+        for (var k = 0; k < 10;k ++){
     
+            var followUrl = (block[k])[0];
+
+            var followOptions = {
+                url: followUrl,
+                headers: {'User-Agent' : 'request'}
+            };
+            
+            var limiterCount = new RateLimiter(45);
+            limiterCount.request(function(){
+            
+                request(followOptions,function(error,response,body){
+            
+                    data = JSON.parse(body);
+                    console.log(body);
+                    count = data.length;
+                    dict[k] = [count,block[k][1]];
+                    console.log([count,block[k][1]]);
+        
+                });
+            });
+    
+        }
+
+    });
 
 });
 
