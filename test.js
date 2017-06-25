@@ -61,9 +61,9 @@ limiterScrape.request(function(){
     calls = [];
 
     for (var k = 0; k < block.length; k++){
-
-        calls.push(getUserCount(block[k][0],block[k][1]));
         
+        calls.push(getUserCount(block[k][0],block[k][1]));
+        //console.log(calls);
 
     }
 
