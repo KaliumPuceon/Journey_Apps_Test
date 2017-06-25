@@ -8,9 +8,6 @@
 //using the GitHub restful API. Created as part of the application
 //process for a JourneyApps internship 2017.
 
-console.log("Starting test run");
-
-var dict = [];
 var block = [];
 
 var scrapeOptions = { 
@@ -38,9 +35,6 @@ limiterScrape.request(function(){
 
         }
 
-    console.log(block);
-
-
     function getUserCount(url,user){
         var options = {
         url:url,
@@ -51,7 +45,6 @@ limiterScrape.request(function(){
         var rp = require('request-promise');
         return rp(options)
             .then(function(body){
-                console.log(body.length,user);
                 return([body.length,user]);
             });
 
@@ -63,19 +56,19 @@ limiterScrape.request(function(){
     for (var k = 0; k < block.length; k++){
         
         calls.push(getUserCount(block[k][0],block[k][1]));
-        //console.log(calls);
 
     }
 
     Promise.all(calls).then(data=>{
-        console.log(data);
+        for (var n = 0; n < 10; n ++){
+            console.log(data[n][0],data[n][1]);
+        }
     });
-
-
-
+    
     
     });
 
 });
+
 
 
