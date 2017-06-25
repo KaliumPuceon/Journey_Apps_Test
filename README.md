@@ -1,18 +1,18 @@
 # Journey Apps Internship Test
 
 This is a short script made for the @journeyapps internship program. The design spec can be found in [this gist](https://gist.github.com/skaapgif/7644116d3e3aae6757da95a7a8b9794a) and can be summarised as:
-    * Find the top 10 Cape Town developers on GitHub, by follower count.
-    * Use node.js to do this.
-    * Use the GitHub search API
-    * Use git.
-    * Be cool about it.
+1. Find the top 10 Cape Town developers on GitHub, by follower count.
+2. Use node.js to do this.
+3. Use the GitHub search API
+4. Use git.
+5. Be cool about it.
 
 #Requirements
 As this is a node.js project, it has a bunch of prerequisites. You'll need to install:
-    * node.js 8
-    * request
-    * request-promise
-    * request-rate-limiter
+1. node.js 8
+2. request
+3. request-promise
+4. request-rate-limiter
 
 You can install node.js using your favourite package manager, or from their [site.](https://nodejs.org/en/download/)
 
