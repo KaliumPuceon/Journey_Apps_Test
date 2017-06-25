@@ -1,6 +1,6 @@
 # Journey Apps Internship Test
 
-This is a short script made for the @journeyapps internship program. The design spec can be found in [this gist](https://gist.github.com/skaapgif/7644116d3e3aae6757da95a7a8b9794a) and can be summarised as:
+This is a short script made for the @JourneyApps internship program. The design spec can be found in [this gist](https://gist.github.com/skaapgif/7644116d3e3aae6757da95a7a8b9794a) and can be summarised as:
 1. Find the top 10 Cape Town developers on GitHub, by follower count.
 2. Use node.js to do this.
 3. Use the GitHub search API
