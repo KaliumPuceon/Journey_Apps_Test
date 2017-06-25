@@ -7,7 +7,7 @@ This is a short script made for the @journeyapps internship program. The design 
 4. Use git.
 5. Be cool about it.
 
-#Requirements
+# Requirements
 As this is a node.js project, it has a bunch of prerequisites. You'll need to install:
 1. node.js 8
 2. request
@@ -30,13 +30,13 @@ npm install request-promise
 npm install request-rate-limiter
 ```
 
-#Running
+# Running
 To run this project, make sure you have an Internet connection and all the needed libraries, and run:
 ```
 nodejs test.js
 ```
 
-#Don't run this script too much
+# Don't run this script too much
 GitHub wisely doesn't allow you to make a billion requests to their API, especially if you don't even have the courtesy to identify yourself. If you run this script twice in an hour, you'll use up your IP's GitHub API queries for an hour. Just wait an hour for them to refresh. If you really wanted to, you could hack it and drop an OAuth token into request options, but this way my code *should* run right off the back without you having to go grab any authentication things.
 
 
