@@ -2,9 +2,9 @@ function get_promise(requestUrl){
 
     var scrapeOptions = {
         url: requestUrl,
-        qs: {
+        /*qs: {
             access_token: "6" //REMOVE BEFORE COMMIT
-        },
+        },*/
         headers: { 'User-Agent':'request'},
         json:true
     };
