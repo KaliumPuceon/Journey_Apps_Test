@@ -1,0 +1,26 @@
+{
+  "name": "journey_apps_test",
+  "version": "1.0.0",
+  "description": "Journey Apps interview question",
+  "main": "refactor.js",
+  "dependencies": {
+    "Promise": "^1.0.5",
+    "ratelimiter": "^3.0.3",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaliumPuceon/Journey_Apps_Test.git"
+  },
+  "author": "Kalium_Puceon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaliumPuceon/Journey_Apps_Test/issues"
+  },
+  "homepage": "https://github.com/KaliumPuceon/Journey_Apps_Test#readme"
+}
