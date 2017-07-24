@@ -11,19 +11,19 @@ function get_promise(requestUrl){
     return rp(scrapeOptions)
 }
 
+var Promise = require('Promise');
+
 userURL = 'https://api.github.com/search/users?q=location:CapeTown&sort=followers&order=desc';
 
 get_promise(userURL).then(function(users){
  
-    userlist = users.items
-
-    var userlist = Array(userlist).map(user => {
+    users = users.items;
+    users.map(function(user){
         
-        user = [user.followers_url,user.login];
-        return(user);
+        console.log(user.login);
 
     });
 
-})
+});
 
 
