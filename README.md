@@ -7,6 +7,8 @@ This is a short script made for the @JourneyApps internship program. The design 
 4. Use git.
 5. Be cool about it.
 
+UPDATE: refactor.js is an updated and better version of this code. However, it relies on an API token in order to work properly, and you will need to supply yours to the program in order to use it.
+
 # Requirements
 As this is a node.js project, it has a bunch of prerequisites. You'll need to install:
 1. node.js 8
@@ -38,5 +40,4 @@ nodejs test.js
 
 # Don't run this script too much
 GitHub wisely doesn't allow you to make a billion requests to their API, especially if you don't even have the courtesy to identify yourself. If you run this script twice in an hour, you'll use up your IP's GitHub API queries for an hour. Just wait an hour for them to refresh. If you really wanted to, you could hack it and drop an OAuth token into request options, but this way my code *should* run right off the back without you having to go grab any authentication things.
-
 
