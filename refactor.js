@@ -35,8 +35,7 @@ get_promise(userURL).then(function(users){
 
     });
 
-    list.slice(0,10).map(function(line) { console.log(line[0]+" "+line[1]);
+    list.slice(0,10).map(function(line) { console.log(line[0]+" "+line[1])});
 
 });
-
 
