@@ -14,15 +14,15 @@ function get_promise(requestUrl){
 userURL = 'https://api.github.com/search/users?q=location:CapeTown&sort=followers&order=desc';
 
 get_promise(userURL).then(function(users){
-    
+ 
+    userlist = users.items
 
-    var users = Array(users).map(user => {
-    
-        user = [parse.followers_url,parse.login];
+    var userlist = Array(userlist).map(user => {
+        
+        user = [user.followers_url,user.login];
         return(user);
 
     });
-
 
 })
 
