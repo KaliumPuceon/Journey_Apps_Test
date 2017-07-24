@@ -3,7 +3,7 @@ function get_promise(requestUrl){
     var scrapeOptions = {
         url: requestUrl,
         qs: {
-            access_token: "6" //REMOVE BEFORE COMMIT
+            access_token: "50ee2e9f453a3a7718bbaff2aa6babcb4c876df7" //REMOVE BEFORE COMMIT
         },
         headers: { 'User-Agent':'request'},
         json:true
@@ -14,14 +14,14 @@ function get_promise(requestUrl){
     return rp(scrapeOptions)
 }
 
-userURL = 'https://api.github.com/search/users?q=location:"CapeTown"&sort=followers&order=desc';
+userURL = 'https://api.github.com/search/users?q=language:javascript+location:"Cape Town"&sort=followers&order=desc';
 
 get_promise(userURL).then(function(users){
  
     users = users.items;
     users = users.map(function(user){
         
-        return([user.followers_url,user.login]);
+        return([user.url,user.login]);
         
     });
 
@@ -49,7 +49,7 @@ get_promise(userURL).then(function(users){
 
         data.map(function(x){
 
-            output[data.indexOf(x)].push(x.length);
+            output[data.indexOf(x)].push(x.followers);
 
         });
 
