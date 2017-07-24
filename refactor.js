@@ -28,17 +28,14 @@ get_promise(userURL).then(function(users){
     users = users.slice(0,10);
 
     var stack = [];
-
     var pair = []
-
+        
     stack = users.map(function(user){
         
         pair.push(user[1])
         return (get_promise(user[0]));
-
         
     });
-
     
     Promise.all(stack).then(data => {
        
