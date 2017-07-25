@@ -32,7 +32,6 @@ get_promise(userURL).then(function(users){
         
     stack = users.map(function(user){
         
-        //pair.push(user[1])
         return (get_promise(user[0]));
         
     });
@@ -40,12 +39,6 @@ get_promise(userURL).then(function(users){
     Promise.all(stack).then(data => {
        
         var output = [];
-        /*
-        output = pair.map(function(x){
-
-           return [x];
-
-        });*/
 
         output = data.map(function(x){
 
